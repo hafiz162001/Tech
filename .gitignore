@@ -1,0 +1,30 @@
+# Dependencies
+**/node_modules/
+node_modules/
+
+# Build artifacts
+**/dist/
+dist/
+**/build/
+build/
+**/target/
+target/
+.angular/
+**/.angular/
+
+# Testing
+**/playwright-report/
+**/test-results/
+
+# IDE & OS
+.vscode/
+**/.vscode/
+.idea/
+**/.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# Environment variables
+.env
+*.env

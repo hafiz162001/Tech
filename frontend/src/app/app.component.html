@@ -1,0 +1,132 @@
+<div class="app-layout" [class.device-mode]="isMobileDeviceFrame">
+  <!-- Top Navigation Bar -->
+  <header class="top-navbar">
+    <div class="nav-left">
+      <a routerLink="/talent-hub" class="brand-logo">
+        <div class="logo-symbol">E</div>
+        <div class="brand-text">
+          <span class="brand-name">ETERNA</span>
+          <span class="brand-tagline">Indonesian Talent & Payroll Platform</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a routerLink="/talent-hub" routerLinkActive="active" class="nav-item">
+          <span class="material-icons-outlined">people</span>
+          <span>Talent Hub</span>
+        </a>
+        <a routerLink="/talent-map" routerLinkActive="active" class="nav-item">
+          <span class="material-icons-outlined">public</span>
+          <span>Global Map</span>
+        </a>
+        <a routerLink="/placements" routerLinkActive="active" class="nav-item">
+          <span class="material-icons-outlined">handshake</span>
+          <span>Placements</span>
+        </a>
+        <a routerLink="/timesheets" routerLinkActive="active" class="nav-item">
+          <span class="material-icons-outlined">timer</span>
+          <span>Timesheets</span>
+        </a>
+        <a routerLink="/payroll" routerLinkActive="active" class="nav-item">
+          <span class="material-icons-outlined">payments</span>
+          <span>Payroll Engine</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="nav-right">
+      <!-- Mobile Simulation Toggle Button -->
+      <button
+        class="toggle-device-btn"
+        [class.active]="isMobileDeviceFrame"
+        (click)="toggleMobileFrame()"
+        title="Toggle Ionic 8 / Capacitor Mobile Shell"
+      >
+        <span class="material-icons-outlined">smartphone</span>
+        <span>{{ isMobileDeviceFrame ? 'Desktop Mode' : 'Ionic Hybrid Shell' }}</span>
+      </button>
+
+      <div class="wib-indicator">
+        <span class="live-dot"></span>
+        <span class="wib-label">WIB:</span>
+        <span class="wib-time">{{ currentTimeWib }}</span>
+      </div>
+
+      <div class="user-profile-badge">
+        <div class="user-avatar">ID</div>
+        <div class="user-info">
+          <span class="user-title">Operations HQ</span>
+          <span class="user-role">Jakarta</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Area (Desktop or Phone Shell) -->
+  <main class="main-wrapper">
+    <div *ngIf="isMobileDeviceFrame" class="mobile-frame-container">
+      <div class="smartphone-bezel">
+        <div class="phone-speaker-notch"></div>
+        <div class="phone-screen">
+          <header class="mobile-header-bar">
+            <span class="mobile-app-title">Eterna Talent • Ionic 8</span>
+            <span class="material-icons" style="font-size: 18px;">notifications</span>
+          </header>
+          <div class="phone-scroll-body">
+            <router-outlet></router-outlet>
+          </div>
+          <!-- Ionic Style Bottom Tab Bar -->
+          <nav class="ionic-bottom-tabs">
+            <a routerLink="/talent-hub" routerLinkActive="tab-active" class="tab-btn">
+              <span class="material-icons">people</span>
+              <span class="tab-txt">Talent</span>
+            </a>
+            <a routerLink="/talent-map" routerLinkActive="tab-active" class="tab-btn">
+              <span class="material-icons">public</span>
+              <span class="tab-txt">Map</span>
+            </a>
+            <a routerLink="/placements" routerLinkActive="tab-active" class="tab-btn">
+              <span class="material-icons">handshake</span>
+              <span class="tab-txt">Pipeline</span>
+            </a>
+            <a routerLink="/timesheets" routerLinkActive="tab-active" class="tab-btn">
+              <span class="material-icons">timer</span>
+              <span class="tab-txt">Timesheets</span>
+            </a>
+            <a routerLink="/payroll" routerLinkActive="tab-active" class="tab-btn">
+              <span class="material-icons">payments</span>
+              <span class="tab-txt">Payroll</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Normal Desktop View -->
+    <div *ngIf="!isMobileDeviceFrame" class="content-container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>Eterna Platform</strong>
+        <span>Indonesian Technology & Business-Process Company • Connecting Indonesian Talent to Global Businesses</span>
+      </div>
+      <div class="footer-stack">
+        <span class="stack-badge">Angular 19</span>
+        <span class="stack-badge">Ionic 8</span>
+        <span class="stack-badge">Capacitor 8</span>
+        <span class="stack-badge">NgRx</span>
+        <span class="stack-badge">Java 21</span>
+        <span class="stack-badge">Spring Boot 3</span>
+        <span class="stack-badge">MySQL</span>
+        <span class="stack-badge">Redis</span>
+        <span class="stack-badge">Quartz</span>
+        <span class="stack-badge">AWS CDK</span>
+      </div>
+    </div>
+  </footer>
+</div>

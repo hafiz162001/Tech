@@ -1,0 +1,55 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: eterna-platform-api
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/eterna_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: eterna_user
+    password: eterna_secure_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms
+
+  quartz:
+    job-store-type: memory
+    properties:
+      org.quartz.threadPool.threadCount: 5
+
+eterna:
+  security:
+    jwt:
+      secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration-ms: 86400000 # 24 hours
+  aws:
+    s3:
+      bucket: eterna-platform-documents-bucket
+      region: ap-southeast-3 # Jakarta region
+  payroll:
+    standard-work-hours: 160
+    default-exchange-rate-usd-idr: 15800.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
